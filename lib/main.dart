@@ -11,13 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Netflix',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        textTheme: TextTheme(titleMedium: TextStyle(color: Colors.white)),
+        textTheme: const TextTheme(
+          titleMedium: TextStyle(color: Colors.white)),
         fontFamily: 'Poppins',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
+        iconTheme: const IconThemeData(color: Colors.white)
       ),
       home: const LoginPage()
     );

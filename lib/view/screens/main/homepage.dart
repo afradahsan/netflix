@@ -25,14 +25,22 @@ class _HomePageState extends State<HomePage> {
       ]),
       body: SafeArea(child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Row(children: [
-              Text('For Afrad'),
-              SizedBox(width: 150,),
-              IconButton(onPressed: (){}, icon: Icon(Icons.cast)), IconButton(onPressed: (){}, icon: Icon(Icons.search)), IconButton(onPressed: (){}, icon: Icon(Icons.person))
-            ],)
-          ],
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                Text('For Afrad', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 24),),
+                Row(
+                  children: [
+                    IconButton(onPressed: (){}, icon: Icon(Icons.cast)), IconButton(onPressed: (){}, icon: Icon(Icons.search)), IconButton(onPressed: (){}, icon: Icon(Icons.person)),
+                  ],
+                )
+              ],)
+            ],
+          ),
         ),
       )),
     );
