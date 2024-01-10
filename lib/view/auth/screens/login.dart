@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/view/screens/main/homepage.dart';
-import 'package:netflix/view/widgets/auth/textfeild.dart';
+import 'package:netflix/view/screens/main/screens/homepage.dart';
+import 'package:netflix/view/screens/auth/widgets/textfeild.dart';
 import 'package:netflix/view/widgets/colors.dart';
-import 'package:netflix/view/widgets/constants.dart';
+import 'package:netflix/utils/constants.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

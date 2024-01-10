@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:netflix/view/widgets/constants.dart';
+import 'package:netflix/utils/constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,6 +15,8 @@ class _HomePageState extends State<HomePage> {
   ScrollController? scrollViewController;
   bool showAppbar = true; 
   bool isScrollingDown = false;
+  String? selectedvalue;
+  
 
   @override
   void initState() {
@@ -56,7 +58,7 @@ void dispose() {
         selectedItemColor: Colors.red,
         unselectedItemColor: const Color.fromARGB(100, 255, 255, 255),
         elevation: 0,
-        items: [
+        items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.newspaper), label: 'News'),
         BottomNavigationBarItem(icon: Icon(Icons.emoji_emotions_outlined), label: 'Fast Laughs'),
@@ -70,7 +72,7 @@ void dispose() {
             children: [
               AnimatedContainer(
                 height: showAppbar ? 100 : 0,
-                duration: Duration(milliseconds: 200),
+                duration: const Duration(milliseconds: 200),
                 child: Column(
                   children: [
                     Row(
@@ -118,6 +120,35 @@ void dispose() {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                         side: BorderSide(color: const Color.fromARGB(192, 255, 255, 255)),
                         ),
+                        Constants.sizedwten(context),
+                        Expanded(
+                          child: DropdownButtonFormField(
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.transparent, width: 2),
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(color:   Colors.transparent, width: 2),
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              filled: true,
+                              fillColor: Colors.transparent,
+                            ),
+                            dropdownColor: Colors.transparent,
+                            items: const [
+                            DropdownMenuItem(value: 'Action',child: Text('Action',),),
+                            DropdownMenuItem(value: 'Romance',child: Text('Romance'),),
+                            DropdownMenuItem(value: 'Sci-Fi',child: Text('Sci-Fi'),),
+                            DropdownMenuItem(value: 'Blah',child: Text('Blah'),),
+                          ], 
+                          value: selectedvalue,
+                          onChanged: (newvalue){
+                            setState(() {
+                              selectedvalue = newvalue;
+                            });
+                          }),
+                        )
                       ],
                     ),
                   ],
@@ -129,7 +160,6 @@ void dispose() {
                   controller: scrollViewController,
                   child: Column(
                     children: [
-                      Text('data', style: TextStyle(color: Colors.amber),),
                       Image.asset('assets/images/netflix-old-logo.png'),
                       Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),
                       Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),
