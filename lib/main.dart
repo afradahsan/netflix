@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/view/screens/auth/screens/login.dart';
+import 'package:netflix/view/auth/screens/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: const TextTheme(
-          titleMedium: TextStyle(color: Colors.white)),
+          bodyLarge: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(color: Colors.white),
+          titleMedium: TextStyle(color: Colors.white)
+        ),
+        scaffoldBackgroundColor: Colors.black,  
         fontFamily: 'Poppins',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,

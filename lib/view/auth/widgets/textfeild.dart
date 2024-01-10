@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/view/widgets/colors.dart';
+import 'package:netflix/utils/colors.dart';
 
 class Textfeildlogin extends StatelessWidget {
   Textfeildlogin({required this.labeltxt, required this.controller, super.key});

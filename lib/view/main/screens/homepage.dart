@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:netflix/utils/constants.dart';
+import 'package:netflix/view/main/widgets/bottomnav.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -52,18 +53,6 @@ void dispose() {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.red,
-        unselectedItemColor: const Color.fromARGB(100, 255, 255, 255),
-        elevation: 0,
-        items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.newspaper), label: 'News'),
-        BottomNavigationBarItem(icon: Icon(Icons.emoji_emotions_outlined), label: 'Fast Laughs'),
-        BottomNavigationBarItem(icon: Icon(Icons.download_rounded), label: 'Downloads')
-      ]),
       body: SafeArea(child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Padding(

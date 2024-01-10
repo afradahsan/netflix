@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/view/screens/main/screens/homepage.dart';
-import 'package:netflix/view/screens/auth/widgets/textfeild.dart';
-import 'package:netflix/view/widgets/colors.dart';
 import 'package:netflix/utils/constants.dart';
+import 'package:netflix/view/auth/widgets/textfeild.dart';
+import 'package:netflix/view/main/screens/homepage.dart';
+import 'package:netflix/view/main/screens/main_bottomnav.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
               child: ElevatedButton(
                 onPressed: (){
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                    return HomePage();
+                    return MainBottomNav();
                   }));
                 }, style: ElevatedButton.styleFrom(backgroundColor: Colors.red, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))), child: const Text('Sign In', style: TextStyle(color: Colors.white),)),
             )
