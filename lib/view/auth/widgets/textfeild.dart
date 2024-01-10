@@ -19,8 +19,8 @@ class Textfeildlogin extends StatelessWidget {
                   focusedBorder:
                   OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
                   filled: true,
-                  fillColor: Palette.textfeildbgdarkgrey,
-                  enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Palette.textfeildbgdarkgrey)) 
+                  fillColor: textfeildbgdarkgrey,
+                  enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: textfeildbgdarkgrey)) 
                 ),
                 controller: controller,
               ),
