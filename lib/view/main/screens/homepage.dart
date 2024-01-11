@@ -82,7 +82,7 @@ void dispose() {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                       side: BorderSide(color: const Color.fromARGB(192, 255, 255, 255)),
                       ),
-                      Constants.sizedwten(context),
+                      sizedwten(context),
                       ChoiceChip(
                       label: Text('Films'),
                       labelStyle: selected ? TextStyle(color: Color.fromARGB(255, 0, 0, 0)) : TextStyle(color: Color.fromARGB(210, 255, 255, 255)),
@@ -99,7 +99,7 @@ void dispose() {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                       side: BorderSide(color: const Color.fromARGB(192, 255, 255, 255)),
                       ),
-                      Constants.sizedwten(context),
+                      sizedwten(context),
                       Expanded(
                         child: DropdownButtonFormField(
                           decoration: InputDecoration(

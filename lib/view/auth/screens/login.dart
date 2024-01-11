@@ -36,9 +36,9 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Textfeildlogin(labeltxt: 'Email', controller: emailController),
-            Constants.sizedten(context),
+            sizedten(context),
             Textfeildlogin(labeltxt: 'Password', controller: passwordController),
-            Constants.sizedtwenty(context),
+            sizedtwenty(context),
             Container(
               width: double.maxFinite,
               child: ElevatedButton(
