@@ -11,8 +11,8 @@ class TopBarDownloads extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [Text(toptitle!, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 24),),
       Row(children: [
-        IconButton(onPressed: (){}, icon: Icon(Icons.cast)),
-        IconButton(onPressed: (){}, icon: Icon(Icons.person)
+        IconButton(onPressed: (){}, icon: Icon(Icons.cast, color: Colors.white,)),
+        IconButton(onPressed: (){}, icon: Icon(Icons.person, color: Colors.white,)
         ),
       ])
     ]);

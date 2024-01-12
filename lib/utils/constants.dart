@@ -10,5 +10,6 @@ import 'package:flutter/material.dart';
     return SizedBox(width: (MediaQuery.of(ctx).size.height)/80,);
   }
 
-  BorderRadius kBordRadius10 = BorderRadius.circular(10);
-  BorderRadius kBordRadius5 = BorderRadius.circular(5);
+  BorderRadius kBordRadius(double num){
+    return BorderRadius.circular(num);
+  }

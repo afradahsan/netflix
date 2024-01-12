@@ -13,7 +13,7 @@ class MainImageHome extends StatelessWidget {
           width: double.infinity,
           height: 450,
           decoration: BoxDecoration(
-            borderRadius: kBordRadius10,
+            borderRadius: kBordRadius(10),
             image: const DecorationImage(image: NetworkImage('https://m.media-amazon.com/images/W/MEDIAX_792452-T1/images/I/81Calh8XRBL._AC_UF1000,1000_QL80_.jpg'),
             fit: BoxFit.cover
             )
@@ -45,7 +45,7 @@ class MainImageHome extends StatelessWidget {
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                      borderRadius: kBordRadius10
+                      borderRadius: kBordRadius(10)
                     )
                   ),
                   onPressed: (){}, label: const Text('Play', style: TextStyle(color: Colors.black ),), icon: const Icon(Icons.play_arrow, color: Colors.black,),),
