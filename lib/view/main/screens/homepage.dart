@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:netflix/utils/constants.dart';
 import 'package:netflix/view/main/widgets/bottomnav.dart';
+import 'package:netflix/view/main/widgets/homepagewidget.dart';
+import 'package:netflix/view/main/widgets/maintitle.dart';
 import 'package:netflix/view/main/widgets/topbar_title_icon.dart';
 
 class HomePage extends StatefulWidget {
@@ -57,6 +59,7 @@ void dispose() {
       body: SafeArea(child: Padding(
         padding: const EdgeInsets.fromLTRB(18, 8, 18, 8),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AnimatedContainer(
               height: showAppbar ? 100 : 0,
@@ -100,48 +103,51 @@ void dispose() {
                       side: BorderSide(color: const Color.fromARGB(192, 255, 255, 255)),
                       ),
                       sizedwten(context),
-                      Expanded(
-                        child: DropdownButtonFormField(
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.transparent, width: 2),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(color:   Colors.transparent, width: 2),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            filled: true,
-                            fillColor: Colors.transparent,
-                          ),
-                          dropdownColor: Colors.transparent,
-                          items: const [
-                          DropdownMenuItem(value: 'Action',child: Text('Action',),),
-                          DropdownMenuItem(value: 'Romance',child: Text('Romance'),),
-                          DropdownMenuItem(value: 'Sci-Fi',child: Text('Sci-Fi'),),
-                          DropdownMenuItem(value: 'Blah',child: Text('Blah'),),
-                        ], 
-                        value: selectedvalue,
-                        onChanged: (newvalue){
-                          setState(() {
-                            selectedvalue = newvalue;
-                          });
-                        }),
-                      )
+                      // Expanded(
+                      //   child: DropdownButtonFormField(
+                      //     decoration: InputDecoration(
+                      //       enabledBorder: OutlineInputBorder(
+                      //         borderSide: BorderSide(color: Colors.transparent, width: 2),
+                      //         borderRadius: BorderRadius.circular(50),
+                      //       ),
+                      //       border: OutlineInputBorder(
+                      //         borderSide: BorderSide(color:   Colors.transparent, width: 2),
+                      //         borderRadius: BorderRadius.circular(50),
+                      //       ),
+                      //       filled: true,
+                      //       fillColor: Colors.transparent,
+                      //     ),
+                      //     dropdownColor: Colors.transparent,
+                      //     items: const [
+                      //     DropdownMenuItem(value: 'Action',child: Text('Action',),),
+                      //     DropdownMenuItem(value: 'Romance',child: Text('Romance'),),
+                      //     DropdownMenuItem(value: 'Sci-Fi',child: Text('Sci-Fi'),),
+                      //     DropdownMenuItem(value: 'Blah',child: Text('Blah'),),
+                      //   ], 
+                      //   value: selectedvalue,
+                      //   onChanged: (newvalue){
+                      //     setState(() {
+                      //       selectedvalue = newvalue;
+                      //     });
+                      //   }),
+                      // )
                     ],
                   ),
                 ],
               ),
             ),
+            // sizedten(context),
             Expanded(
               child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: BouncingScrollPhysics(),
                 controller: scrollViewController,
                 child: Column(
                   children: [
-                    Image.asset('assets/images/netflix-old-logo.png'),
-                    Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),
-                    Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),Image.asset('assets/images/netflix-old-logo.png'),
+                    HomeWidget(title: 'Released Last Year',),
+                    HomeWidget(title: 'Trending Now',),
+                    HomeWidget(title: 'Released Last Year',),
+                    HomeWidget(title: 'Tense Dramas',),
+                    HomeWidget(title: 'South-Indian Cinema',)
                   ],
                 ),
               ),

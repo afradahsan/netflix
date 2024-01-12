@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/utils/constants.dart';
+import 'package:netflix/view/main/widgets/maintitle.dart';
 
 class PopularSearch extends StatelessWidget {
   const PopularSearch({super.key});
@@ -11,11 +12,7 @@ class PopularSearch extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Popular Searches',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-              )),
+          MainTitle(title: 'Popular Search'),
           sizedten(context),
           Expanded(
             child: ListView.separated(

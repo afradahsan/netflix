@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/utils/constants.dart';
+import 'package:netflix/view/main/widgets/MovieCard.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({super.key});
@@ -24,19 +25,5 @@ class SearchResult extends StatelessWidget {
         children: List.generate(20, (index) => MovieCard()),
       )) 
     ],);
-  }
-}
-
-class MovieCard extends StatelessWidget {
-  const MovieCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        image: DecorationImage(fit: BoxFit.fill, image: NetworkImage('https://www.themoviedb.org/t/p/w220_and_h330_face/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg',))),
-    );
   }
 }
