@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:netflix/utils/constants.dart';
+import 'package:netflix/view/main/widgets/NumberCard.dart';
 import 'package:netflix/view/main/widgets/bottomnav.dart';
 import 'package:netflix/view/main/widgets/homepagewidget.dart';
 import 'package:netflix/view/main/widgets/maintitle.dart';
@@ -70,9 +71,9 @@ void dispose() {
                   Row(
                     children: [
                       ChoiceChip(
-                      label: Text('Series'),
-                      labelStyle: selected ? TextStyle(color: Color.fromARGB(255, 0, 0, 0)) : TextStyle(color: Color.fromARGB(210, 255, 255, 255)),
-                      labelPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      label: const Text('Series'),
+                      labelStyle: selected ? const TextStyle(color: Color.fromARGB(255, 0, 0, 0)) : const TextStyle(color: Color.fromARGB(210, 255, 255, 255)),
+                      labelPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                       selected: selected,
                       onSelected: (value) {
                         setState(() {
@@ -83,13 +84,13 @@ void dispose() {
                       selectedColor: const Color.fromARGB(255, 255, 255, 255),
                       backgroundColor: Colors.black, showCheckmark: false,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-                      side: BorderSide(color: const Color.fromARGB(192, 255, 255, 255)),
+                      side: const BorderSide(color: Color.fromARGB(192, 255, 255, 255)),
                       ),
                       sizedwten(context),
                       ChoiceChip(
-                      label: Text('Films'),
-                      labelStyle: selected ? TextStyle(color: Color.fromARGB(255, 0, 0, 0)) : TextStyle(color: Color.fromARGB(210, 255, 255, 255)),
-                      labelPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      label: const Text('Films'),
+                      labelStyle: selected ? const TextStyle(color: Color.fromARGB(255, 0, 0, 0)) : const TextStyle(color: Color.fromARGB(210, 255, 255, 255)),
+                      labelPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                       selected: selected,
                       onSelected: (value) {
                         setState(() {
@@ -100,7 +101,7 @@ void dispose() {
                       selectedColor: const Color.fromARGB(255, 255, 255, 255),
                       backgroundColor: Colors.black, showCheckmark: false,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-                      side: BorderSide(color: const Color.fromARGB(192, 255, 255, 255)),
+                      side: const BorderSide(color: Color.fromARGB(192, 255, 255, 255)),
                       ),
                       sizedwten(context),
                       // Expanded(
@@ -139,12 +140,25 @@ void dispose() {
             // sizedten(context),
             Expanded(
               child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 controller: scrollViewController,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     HomeWidget(title: 'Released Last Year',),
                     HomeWidget(title: 'Trending Now',),
+
+                    MainTitle(title: 'Top 10 TV Shows'),
+                    sizedtwenty(context),
+                    LimitedBox(
+                      maxHeight: 160,
+                      child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: List.generate(10, (index) => NumberCard(index: index,)),
+                      ),
+                    ),
+                    sizedtwenty(context),
+
                     HomeWidget(title: 'Released Last Year',),
                     HomeWidget(title: 'Tense Dramas',),
                     HomeWidget(title: 'South-Indian Cinema',)
