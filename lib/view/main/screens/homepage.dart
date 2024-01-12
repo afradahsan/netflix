@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:netflix/utils/constants.dart';
+import 'package:netflix/view/main/widgets/MainImagehome.dart';
 import 'package:netflix/view/main/widgets/NumberCard.dart';
 import 'package:netflix/view/main/widgets/bottomnav.dart';
 import 'package:netflix/view/main/widgets/homepagewidget.dart';
@@ -156,7 +157,6 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            // sizedten(context),
             Expanded(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -164,6 +164,8 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    MainImageHome(),
+                    sizedten(context),
                     const HomeWidget(
                       title: 'Released Last Year',
                     ),
