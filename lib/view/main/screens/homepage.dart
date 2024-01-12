@@ -15,49 +15,50 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   bool selected = false;
   ScrollController? scrollViewController;
-  bool showAppbar = true; 
+  bool showAppbar = true;
   bool isScrollingDown = false;
   String? selectedvalue;
-  
 
   @override
   void initState() {
     super.initState();
     scrollViewController = ScrollController();
     scrollViewController!.addListener(() {
-      if (scrollViewController!.position.userScrollDirection == ScrollDirection.reverse) {
-      if (!isScrollingDown) {
-        isScrollingDown = true;
-        showAppbar = false;
-        setState(() {});
+      if (scrollViewController!.position.userScrollDirection ==
+          ScrollDirection.reverse) {
+        if (!isScrollingDown) {
+          isScrollingDown = true;
+          showAppbar = false;
+          setState(() {});
+        }
       }
-    }
 
-    if (scrollViewController!.position.userScrollDirection == ScrollDirection.forward) {
-      if (isScrollingDown) {
-        isScrollingDown = false;
-        showAppbar = true;
-        setState(() {});
+      if (scrollViewController!.position.userScrollDirection ==
+          ScrollDirection.forward) {
+        if (isScrollingDown) {
+          isScrollingDown = false;
+          showAppbar = true;
+          setState(() {});
+        }
       }
-    }
     });
   }
 
   @override
-void dispose() {
-  scrollViewController!.dispose();
-  scrollViewController!.removeListener(() {});
-  super.dispose();
-}
+  void dispose() {
+    scrollViewController!.dispose();
+    scrollViewController!.removeListener(() {});
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SafeArea(child: Padding(
+      body: SafeArea(
+          child: Padding(
         padding: const EdgeInsets.fromLTRB(18, 8, 18, 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,41 +68,59 @@ void dispose() {
               duration: const Duration(milliseconds: 200),
               child: Column(
                 children: [
-                  TopBarTitle(toptitle: 'For Afrad',),
+                  TopBarTitle(
+                    toptitle: 'For Afrad',
+                  ),
                   Row(
                     children: [
                       ChoiceChip(
-                      label: const Text('Series'),
-                      labelStyle: selected ? const TextStyle(color: Color.fromARGB(255, 0, 0, 0)) : const TextStyle(color: Color.fromARGB(210, 255, 255, 255)),
-                      labelPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      selected: selected,
-                      onSelected: (value) {
-                        setState(() {
-                          selected = !selected;
-                          debugPrint('object');
-                          debugPrint('$selected');
-                        });},
-                      selectedColor: const Color.fromARGB(255, 255, 255, 255),
-                      backgroundColor: Colors.black, showCheckmark: false,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-                      side: const BorderSide(color: Color.fromARGB(192, 255, 255, 255)),
+                        label: const Text('Series'),
+                        labelStyle: selected
+                            ? const TextStyle(
+                                color: Color.fromARGB(255, 0, 0, 0))
+                            : const TextStyle(
+                                color: Color.fromARGB(210, 255, 255, 255)),
+                        labelPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        selected: selected,
+                        onSelected: (value) {
+                          setState(() {
+                            selected = !selected;
+                            debugPrint('object');
+                            debugPrint('$selected');
+                          });
+                        },
+                        selectedColor: const Color.fromARGB(255, 255, 255, 255),
+                        backgroundColor: Colors.black,
+                        showCheckmark: false,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                        side: const BorderSide(
+                            color: Color.fromARGB(192, 255, 255, 255)),
                       ),
                       sizedwten(context),
                       ChoiceChip(
-                      label: const Text('Films'),
-                      labelStyle: selected ? const TextStyle(color: Color.fromARGB(255, 0, 0, 0)) : const TextStyle(color: Color.fromARGB(210, 255, 255, 255)),
-                      labelPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      selected: selected,
-                      onSelected: (value) {
-                        setState(() {
-                          selected = !selected;
-                          debugPrint('object');
-                          debugPrint('$selected');
-                        });},
-                      selectedColor: const Color.fromARGB(255, 255, 255, 255),
-                      backgroundColor: Colors.black, showCheckmark: false,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-                      side: const BorderSide(color: Color.fromARGB(192, 255, 255, 255)),
+                        label: const Text('Films'),
+                        labelStyle: selected
+                            ? const TextStyle(
+                                color: Color.fromARGB(255, 0, 0, 0))
+                            : const TextStyle(
+                                color: Color.fromARGB(210, 255, 255, 255)),
+                        labelPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        selected: selected,
+                        onSelected: (value) {
+                          setState(() {
+                            selected = !selected;
+                            debugPrint('object');
+                            debugPrint('$selected');
+                          });
+                        },
+                        selectedColor: const Color.fromARGB(255, 255, 255, 255),
+                        backgroundColor: Colors.black,
+                        showCheckmark: false,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                        side: const BorderSide(
+                            color: Color.fromARGB(192, 255, 255, 255)),
                       ),
                       sizedwten(context),
                       // Expanded(
@@ -124,7 +143,7 @@ void dispose() {
                       //     DropdownMenuItem(value: 'Romance',child: Text('Romance'),),
                       //     DropdownMenuItem(value: 'Sci-Fi',child: Text('Sci-Fi'),),
                       //     DropdownMenuItem(value: 'Blah',child: Text('Blah'),),
-                      //   ], 
+                      //   ],
                       //   value: selectedvalue,
                       //   onChanged: (newvalue){
                       //     setState(() {
@@ -145,23 +164,34 @@ void dispose() {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    HomeWidget(title: 'Released Last Year',),
-                    HomeWidget(title: 'Trending Now',),
-
-                    MainTitle(title: 'Top 10 TV Shows'),
-                    sizedtwenty(context),
+                    const HomeWidget(
+                      title: 'Released Last Year',
+                    ),
+                    const HomeWidget(
+                      title: 'Trending Now',
+                    ),
+                    const MainTitle(title: 'Top 10 TV Shows'),
                     LimitedBox(
                       maxHeight: 160,
                       child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: List.generate(10, (index) => NumberCard(index: index,)),
+                        scrollDirection: Axis.horizontal,
+                        children: List.generate(
+                            10,
+                            (index) => NumberCard(
+                                  index: index,
+                                )),
                       ),
                     ),
-                    sizedtwenty(context),
-
-                    HomeWidget(title: 'Released Last Year',),
-                    HomeWidget(title: 'Tense Dramas',),
-                    HomeWidget(title: 'South-Indian Cinema',)
+                    sizedten(context),
+                    const HomeWidget(
+                      title: 'Released Last Year',
+                    ),
+                    const HomeWidget(
+                      title: 'Tense Dramas',
+                    ),
+                    const HomeWidget(
+                      title: 'South-Indian Cinema',
+                    )
                   ],
                 ),
               ),
