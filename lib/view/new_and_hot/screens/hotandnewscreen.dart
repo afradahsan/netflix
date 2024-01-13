@@ -4,6 +4,7 @@ import 'package:netflix/utils/constants.dart';
 import 'package:netflix/view/downloads/widgets/topbardownloads.dart';
 import 'package:netflix/view/fastlaugh/widgets/iconwithtext.dart';
 import 'package:netflix/view/new_and_hot/widgets/comingsoonwidget.dart';
+import 'package:netflix/view/new_and_hot/widgets/everyoneswatching.dart';
 
 class HotandNew extends StatelessWidget {
   const HotandNew({super.key});
@@ -50,8 +51,14 @@ buildComingSoon(context) {
 }
 
 buildEveryoneswatching(context){
-  return Container(
-    
+  final size = MediaQuery.of(context).size;
+  return ListView.builder(
+    padding: EdgeInsets.all(10),
+    shrinkWrap: true,
+    itemCount: 5,
+    itemBuilder: (context, index) {
+      return  Everyoneswatching();
+    },
   );
 }
 
