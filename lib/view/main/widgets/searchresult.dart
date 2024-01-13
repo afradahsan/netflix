@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/utils/constants.dart';
 import 'package:netflix/view/main/widgets/MovieCard.dart';
+import 'package:netflix/view/main/widgets/NumberCard.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({super.key});
@@ -22,7 +23,7 @@ class SearchResult extends StatelessWidget {
         mainAxisSpacing: 5,
         crossAxisSpacing: 5,
         childAspectRatio: 1/1.6,
-        children: List.generate(20, (index) => MovieCard()),
+        children: List.generate(20, (index) => NumberCard(index: index,)),
       )) 
     ],);
   }

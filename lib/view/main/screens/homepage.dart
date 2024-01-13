@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:netflix/controller/api_service.dart';
 import 'package:netflix/utils/constants.dart';
 import 'package:netflix/view/main/widgets/MainImagehome.dart';
 import 'package:netflix/view/main/widgets/NumberCard.dart';
@@ -166,11 +167,13 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     MainImageHome(),
                     sizedten(context),
-                    const HomeWidget(
+                    HomeWidget(
                       title: 'Released Last Year',
+                      getfunction: ApiService().getTrendingMovies(),
                     ),
-                    const HomeWidget(
+                    HomeWidget(
                       title: 'Trending Now',
+                      getfunction: ApiService().getTrendingMovies(),
                     ),
                     const MainTitle(title: 'Top 10 TV Shows'),
                     LimitedBox(
@@ -185,14 +188,13 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     sizedten(context),
-                    const HomeWidget(
-                      title: 'Released Last Year',
-                    ),
-                    const HomeWidget(
+                    HomeWidget(
                       title: 'Tense Dramas',
+                      getfunction: ApiService().getTrendingMovies(),
                     ),
-                    const HomeWidget(
+                    HomeWidget(
                       title: 'South-Indian Cinema',
+                      getfunction: ApiService().getTrendingMovies(),
                     )
                   ],
                 ),

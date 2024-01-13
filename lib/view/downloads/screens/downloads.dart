@@ -24,6 +24,7 @@ class _DownloadsScreenState extends State<DownloadsScreen> {
     // TODO: implement initState
     super.initState();
     trendingMovies = ApiService().getTrendingMovies();
+    print('hey - $trendingMovies');
   }
   @override
   Widget build(BuildContext context) {
@@ -87,11 +88,6 @@ class SectionTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final imageList = [
-      'https://www.themoviedb.org/t/p/w220_and_h330_face/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg',
-      'https://www.themoviedb.org/t/p/w220_and_h330_face/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg',
-      'https://www.themoviedb.org/t/p/w220_and_h330_face/a6syn9qcU4a54Lmi3JoIr1XvhFU.jpg'
-    ];
 
     return Column(
       children: [

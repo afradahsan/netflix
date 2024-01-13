@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/controller/api_endpoints.dart';
 
 class MovieCard extends StatelessWidget {
-  const MovieCard({super.key});
+  const MovieCard({required this.snapshot, super.key});
+
+  final AsyncSnapshot snapshot;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
-      child: Column(
-        children: [
-          Container(
-            width: 100,
-            height: 150,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              image: DecorationImage(fit: BoxFit.fill, image: NetworkImage('https://www.themoviedb.org/t/p/w220_and_h330_face/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg',))),
-          ),
-        ],
-      ),
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: EdgeInsets.fromLTRB(0,5,10,10),
+          child: Container(
+          width: 100,
+          height: 150,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            image: DecorationImage(fit: BoxFit.fill, image: NetworkImage('${baseImageURL}${snapshot.data[index].posterPath}',))),
+              ),
+        );
+      },
     );
   }
 }
