@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/utils/constants.dart';
 
+import 'iconwithtext.dart';
+
 class VideoList extends StatefulWidget {
   final int index;
   const VideoList({required this.index, super.key});
@@ -65,13 +67,13 @@ class _VideoListState extends State<VideoList> {
                       ],
                     ),
                     sizedten(context),
-                    const VideoReactions(
+                    const IconwithText(
                         icon: Icons.emoji_emotions_rounded, title: 'LOL'),
-                    const VideoReactions(
+                    const IconwithText(
                         icon: CupertinoIcons.add, title: 'My List'),
-                    const VideoReactions(
+                    const IconwithText(
                         icon: Icons.send_rounded, title: 'Share'),
-                    const VideoReactions(
+                    const IconwithText(
                         icon: CupertinoIcons.play_arrow_solid, title: 'Play'),
                   ],
                 ),
@@ -80,23 +82,6 @@ class _VideoListState extends State<VideoList> {
           ),
         )
       ],
-    );
-  }
-}
-
-class VideoReactions extends StatelessWidget {
-  const VideoReactions({required this.icon, required this.title, super.key});
-
-  final IconData icon;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 6),
-      child: Column(
-        children: [Icon(icon), Text(title)],
-      ),
     );
   }
 }
