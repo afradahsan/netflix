@@ -22,6 +22,8 @@ class _SearchPageState extends State<SearchPage> {
   List<Map<String, dynamic>> searchList = [];
   var val1;
 
+  //Use Debounce
+
   Future<List<Map<String, dynamic>>> searchresult(String val) async {
     var searchUrl = '$baseURL/search/movie?query=$val&api_key=$apikey';
     var response = await http.get(Uri.parse(searchUrl));
