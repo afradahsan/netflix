@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/controller/api_service.dart';
 import 'package:netflix/model/MovieModel.dart';
 import 'package:netflix/utils/constants.dart';
-import 'package:netflix/view/main/widgets/MovieCard.dart';
+import 'package:netflix/view/main/widgets/NumberCard.dart';
 import 'package:netflix/view/main/widgets/maintitle.dart';
 
-class HomeWidget extends StatefulWidget {
-  const HomeWidget({required this.title,required this.getfunction, super.key});
+class Top10widget extends StatefulWidget {
+  const Top10widget({required this.title, required this.getfunction, super.key});
 
   final String title;
   final Future<List<Movie>> getfunction;
 
   @override
-  State<HomeWidget> createState() => _HomeWidgetState();
+  State<Top10widget> createState() => _Top10widgetState();
 }
 
-class _HomeWidgetState extends State<HomeWidget> {
+class _Top10widgetState extends State<Top10widget> {
+
   late Future<List<Movie>> movieList;
 
   @override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
+  void initState() {
+    // TODO: implement initState
+    super.initState();
     movieList = widget.getfunction;
   }
 
@@ -40,7 +40,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               if(snapshot.hasError){
                 return Center(child: Text(snapshot.error.toString()));
               }else if(snapshot.hasData){
-                return MovieCard(snapshot: snapshot);
+                return NumberCard(snapshot: snapshot);
               }else{
                 return Center(child: CircularProgressIndicator(),);
               }
@@ -55,4 +55,3 @@ class _HomeWidgetState extends State<HomeWidget> {
     );
   }
 }
-

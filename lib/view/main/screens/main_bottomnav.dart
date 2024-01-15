@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/controller/api_service.dart';
 import 'package:netflix/view/downloads/screens/downloads.dart';
 import 'package:netflix/view/fastlaugh/screens/fastlaugh.dart';
 import 'package:netflix/view/main/screens/homepage.dart';
@@ -10,7 +11,7 @@ class MainBottomNav extends StatelessWidget {
 
   List pages = [
     HomePage(),
-    HotandNew(),
+    HotandNew(getfunctionhot: ApiService().getUpcomingMovies(), getfunctioneveryone: ApiService().getToptenMovies(),),
     FastLaugh(),
     DownloadsScreen()
   ];

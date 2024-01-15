@@ -1,18 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/controller/api_endpoints.dart';
+import 'package:netflix/controller/api_service.dart';
+import 'package:netflix/model/MovieModel.dart';
 import 'package:netflix/utils/colors.dart';
 import 'package:netflix/utils/constants.dart';
 import 'package:netflix/view/downloads/widgets/downloadsimage.dart';
 import 'package:netflix/view/downloads/widgets/topbardownloads.dart';
 
-class DownloadsScreen extends StatelessWidget {
+
+class DownloadsScreen extends StatefulWidget {
   const DownloadsScreen({super.key});
 
   @override
+  State<DownloadsScreen> createState() => _DownloadsScreenState();
+}
+
+class _DownloadsScreenState extends State<DownloadsScreen> {
+
+  late Future<List<Movie>> trendingMovies;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    trendingMovies = ApiService().getTrendingMovies();
+    print('hey - $trendingMovies');
+  }
+  @override
   Widget build(BuildContext context) {
+    
     final widgetList = [
       TopBarDownloads(toptitle: 'Downloads'),
       SmartDownloads(),
-      SectionTwo(),
+      FutureBuilder(
+        future: trendingMovies,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if(snapshot.hasError){
+            return Text(snapshot.error.toString());
+          }else if(snapshot.hasData){
+            return SectionTwo(snapshot: snapshot);
+          }else{
+            return Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
       SectionThree()
     ];
 
@@ -50,16 +81,13 @@ class SmartDownloads extends StatelessWidget {
 }
 
 class SectionTwo extends StatelessWidget {
-  const SectionTwo({super.key});
+  const SectionTwo({required this.snapshot, super.key});
+
+  final AsyncSnapshot snapshot;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final imageList = [
-      'https://www.themoviedb.org/t/p/w220_and_h330_face/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg',
-      'https://www.themoviedb.org/t/p/w220_and_h330_face/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg',
-      'https://www.themoviedb.org/t/p/w220_and_h330_face/a6syn9qcU4a54Lmi3JoIr1XvhFU.jpg'
-    ];
 
     return Column(
       children: [
@@ -83,19 +111,19 @@ class SectionTwo extends StatelessWidget {
                 backgroundColor: const Color.fromARGB(70, 255, 255, 255),
               ),
               DownlImageWidget(
-                  image: imageList[0],
+                  image: '$baseImageURL${snapshot.data[0].posterPath}',
                   angle: 18,
                   pos: EdgeInsets.only(left: 140, bottom: 30),
                   w: 0.35,
                   h: 0.55),
               DownlImageWidget(
-                  image: imageList[2],
+                  image: '$baseImageURL${snapshot.data[1].posterPath}',
                   angle: -18,
                   pos: EdgeInsets.only(right: 140, bottom: 30),
                   w: 0.35,
                   h: 0.55),
               DownlImageWidget(
-                  image: imageList[1],
+                  image: '$baseImageURL${snapshot.data[2].posterPath}',
                   angle: 0,
                   pos: EdgeInsets.only(right: 0),
                   w: 0.4,

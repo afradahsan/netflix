@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:netflix/controller/api_service.dart';
 import 'package:netflix/utils/constants.dart';
 import 'package:netflix/view/main/widgets/MainImagehome.dart';
 import 'package:netflix/view/main/widgets/NumberCard.dart';
 import 'package:netflix/view/main/widgets/bottomnav.dart';
 import 'package:netflix/view/main/widgets/homepagewidget.dart';
+import 'package:netflix/view/main/widgets/hometop10.dart';
 import 'package:netflix/view/main/widgets/maintitle.dart';
 import 'package:netflix/view/main/widgets/topbar_title_icon.dart';
 
@@ -166,33 +168,36 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     MainImageHome(),
                     sizedten(context),
-                    const HomeWidget(
-                      title: 'Released Last Year',
-                    ),
-                    const HomeWidget(
+                    HomeWidget(
                       title: 'Trending Now',
+                      getfunction: ApiService().getTrendingMovies(),
                     ),
-                    const MainTitle(title: 'Top 10 TV Shows'),
-                    LimitedBox(
-                      maxHeight: 160,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: List.generate(
-                            10,
-                            (index) => NumberCard(
-                                  index: index,
-                                )),
-                      ),
+                    HomeWidget(
+                      title: 'Upcoming Movies',
+                      getfunction: ApiService().getUpcomingMovies(),
                     ),
+                    // const MainTitle(title: 'Top 10 TV Shows'),
+                    Top10widget(title: 'Top 10 TV Shows', getfunction: ApiService().getToptenMovies()),
+                    // LimitedBox(
+                    //   maxHeight: 160,
+                    //   child: FutureBuilder(future: future, builder: builder),
+                    //   // child: ListView(
+                    //   //   scrollDirection: Axis.horizontal,
+                    //   //   children: List.generate(
+                    //   //       10,
+                    //   //       (index) => NumberCard(
+                    //   //             index: index,
+                    //   //           )),
+                    //   // ),
+                    // ),
                     sizedten(context),
-                    const HomeWidget(
-                      title: 'Released Last Year',
-                    ),
-                    const HomeWidget(
+                    HomeWidget(
                       title: 'Tense Dramas',
+                      getfunction: ApiService().getTrendingMovies(),
                     ),
-                    const HomeWidget(
+                    HomeWidget(
                       title: 'South-Indian Cinema',
+                      getfunction: ApiService().getTrendingMovies(),
                     )
                   ],
                 ),
