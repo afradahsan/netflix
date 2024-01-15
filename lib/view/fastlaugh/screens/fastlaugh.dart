@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/controller/api_service.dart';
 import 'package:netflix/view/fastlaugh/widgets/videolist.dart';
 
 class FastLaugh extends StatelessWidget {
@@ -7,13 +8,28 @@ class FastLaugh extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child:
-        PageView(
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.vertical,          children: 
-            List.generate(10, (index) => VideoList(index: index,))
-        )
-      ), 
+      body: SafeArea(
+        child: FutureBuilder(
+          future: ApiService().getToptenMovies(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Center(child: Text(snapshot.error.toString()));
+            } else if (snapshot.hasData) {
+              return PageView.builder(
+                physics: BouncingScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                itemCount: snapshot.data!.length,
+
+                itemBuilder: (context, index) {
+                  return VideoList(snapshot: snapshot, index: index);
+                },
+              );
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          },
+        ),
+      ),
     );
   }
-} 
+}

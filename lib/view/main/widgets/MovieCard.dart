@@ -10,6 +10,7 @@ class MovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return ListView.builder(
+      shrinkWrap: true,
       scrollDirection: Axis.horizontal,
       itemCount: 10,
       itemBuilder: (context, index) {
@@ -21,7 +22,7 @@ class MovieCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
             image: DecorationImage(fit: BoxFit.fill, image: NetworkImage('${baseImageURL}${snapshot.data[index].posterPath}',))),
-              ),
+          ),
         );
       },
     );
