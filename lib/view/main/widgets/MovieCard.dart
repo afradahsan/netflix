@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/controller/api_endpoints.dart';
+import 'package:netflix/view/main/screens/moviedetails.dart';
 
 class MovieCard extends StatelessWidget {
   const MovieCard({required this.snapshot, super.key});
@@ -16,12 +17,19 @@ class MovieCard extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: EdgeInsets.fromLTRB(0,5,10,10),
-          child: Container(
-          width: 100,
-          height: 150,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            image: DecorationImage(fit: BoxFit.fill, image: NetworkImage('${baseImageURL}${snapshot.data[index].posterPath}',))),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return MovieDetailsPage(snapshot: snapshot.data[index],);
+              },));
+            },
+            child: Container(
+            width: 100,
+            height: 150,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              image: DecorationImage(fit: BoxFit.fill, image: NetworkImage('${baseImageURL}${snapshot.data[index].posterPath}',))),
+            ),
           ),
         );
       },

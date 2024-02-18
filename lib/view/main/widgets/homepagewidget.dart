@@ -46,10 +46,6 @@ class _HomeWidgetState extends State<HomeWidget> {
               }
             },
           )
-          // ListView(
-          // scrollDirection: Axis.horizontal,
-          // children: List.generate(10, (index) => MovieCard()),
-          // ),
         )
       ],
     );

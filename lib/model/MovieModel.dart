@@ -9,6 +9,7 @@ class Movie {
   String? posterPath;
   String? releaseDate;
   double? voteAverage;
+  String? language;
 
   Movie({
     required this.title,
@@ -18,6 +19,7 @@ class Movie {
     required this.posterPath,
     required this.releaseDate,
     required this.voteAverage,
+    required this.language
   });
 
   factory Movie.fromJson(Map<String, dynamic> jsonMap) {
@@ -28,7 +30,8 @@ class Movie {
         overview: jsonMap['overview'],
         posterPath: jsonMap['poster_path'],
         releaseDate: jsonMap['release_date'],
-        voteAverage: jsonMap['vote_average']
+        voteAverage: jsonMap['vote_average'],
+        language: jsonMap['original_language']
       );
   }
 }

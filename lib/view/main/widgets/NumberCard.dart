@@ -1,11 +1,13 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/controller/api_endpoints.dart';
+import 'package:netflix/model/MovieModel.dart';
+import 'package:netflix/view/main/screens/moviedetails.dart';
 
 class NumberCard extends StatelessWidget {
   const NumberCard({required this.snapshot, super.key});
 
-  final AsyncSnapshot snapshot;
+  final AsyncSnapshot<List<Movie>> snapshot;
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +25,23 @@ class NumberCard extends StatelessWidget {
                       height: 160,
                       width: 30,
                     ),
-                    Container(
-                      width: 100, 
-                      height: 150,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(
-                                '$baseImageURL${snapshot.data[index].posterPath}',
-                              ))),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                          return MovieDetailsPage(snapshot: snapshot.data?[index]);
+                        },));
+                      },
+                      child: Container(
+                        width: 100, 
+                        height: 150,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image: NetworkImage(
+                                  '$baseImageURL${snapshot.data?[index].posterPath}',
+                                ))),
+                      ),
                     ),
                   ],
                 ),
